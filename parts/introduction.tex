@@ -3,31 +3,16 @@
 \begin{document}
 \section{Introducción}
 
-% En los últimos años, los sistemas automatizados han permitido mejorar
-% significativamente la eficiencia en diversos sectores, incluyendo la
-% agricultura.
-% Este proyecto presenta un Sistema de Control de Invernadero Automatizado, cuyo
-% objetivo es gestionar de manera inteligente las condiciones internas del
-% invernadero, favoreciendo el crecimiento óptimo de las plantas.
-% Utilizando el microcontrolador ESP32, se obtienen variables críticas como la
-% temperatura, la humedad, el riego y la ventilación.
-% A través de sensores como el BME280 (para temperatura y humedad) y sensores de
-% luz, el sistema avisará de riesgos para mantener condiciones estables.
-% Además, la integración de un sistema de comunicación inalámbrica WiFi permite
-% monitorear remotamente el estado del invernadero, lo que facilita la gestión de
-% estos parámetros desde cualquier ubicación.
-% Este informe detalla el diseño y funcionamiento del sistema, así como los
-% principales desafíos técnicos encontrados durante su desarrollo.
+El proceso de cultivar plantas en un entorno controlado requiere la observación
+y moderación de múltiples condiciones ambientales necesarias para el crecimiento
+de las plantas de interés.
+El presente proyecto está orientado a facilitar la labor de registrar e
+inspeccionar indicadores cuantitativos que corresponden con la situación de un
+ambiente de cultivo.
 
-El crecimiento de la automatización en múltiples industrias ha tenido un rol
-crucial tanto en su eficiencia como en su calidad y volumen de producción.
-El presente proyecto propone el monitoreo remoto de un invernadero como forma de
-facilitar la gestión de sus condiciones internas, lo que permite mantener
-condiciones adecuadas para las plantas con mayor facilidad.
-
-En su centro se encuentra un microcontrolador ESP32 \cite{devkitv4} que, en
+En su centro se encuentra un microcontrolador ESP32 \supercite{devkitv4} que, en
 conjunto con sensores colocados en el ambiente a monitorear, constituye un
-bloque fundacional en el posible monitoreo de múltiples ambientes.
+bloque fundacional en el monitoreo de un sitio de cultivo.
 Además, sus capacidades de comunicación inalámbrica permiten integrar la
 recolección de datos con servicios en la nube sobre los cuales es posible
 construir un sistema de alertas frente a posibles condiciones inadecuadas.

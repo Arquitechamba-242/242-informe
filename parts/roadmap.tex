@@ -5,6 +5,8 @@
 
 \subsection{Configuración de Hardware}
 
+\setcounter{subsubsection}{-1}
+
 \subsubsection{Recursos a usar}
 
 \begin{itemize}
@@ -57,4 +59,52 @@ gestor de placas lo siguiente:
 
 Para realizar una conexión a Firebase desde tu ESP32, es utilizada la biblioteca
 Firebase ESP32 Client.
+
+\subsection{Programación de aplicación}
+
+\setcounter{subsubsection}{-1}
+
+\subsubsection{Recursos a usar}
+
+\begin{itemize}
+	\item Kotlin: lenguaje principal de desarrollo
+	      \footnote{\url{https://kotlinlang.org/}}
+	\item Firebase Realtime Database: almacenamiento de observaciones y perfiles
+	      \footnote{\url{https://firebase.google.com/}}
+	\item Androidplot: biblioteca para la creación de gráficos
+	      \footnote{\url{https://github.com/halfhp/androidplot}}
+\end{itemize}
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=15cm]{res/AutenticacionFireBase.png}
+	\caption{Usuario registrado en Firebase}
+	\label{FiguraDeAutenticacion}
+\end{figure}
+
+\subsubsection{Visualización de datos y gráficos}
+
+\begin{itemize}
+	\item Parámetros ambientales:
+	      Los valores de temperatura, humedad, presión y concentración de \ce{CO2}
+	      aparecerán en la pantalla principal junto a indicadores de su
+	      adecuación al perfil de monitoreo
+	\item Generación de gráficos:
+	      La aplicación permitirá también la visualización gráfica de los datos
+	      históricos. Para implementar esta funcionalidad, se usará la biblioteca
+	      AndroidPlot que facilita la creación de gráficos de líneas, gráficos de
+	      barras y otras representaciones visuales.
+	\item Datos históricos:
+	      Los usuarios podrán acceder a un historial de las condiciones ambientales
+	      registradas, lo cual será útil para la toma de decisiones relacionadas
+	      con el cultivo.
+\end{itemize}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=10cm]{res/GráficosParaAplicación.jpeg}
+	\caption{Gráficos generado por biblioteca}
+	\label{FiguraDeGráficos}
+\end{figure}
 \end{document}

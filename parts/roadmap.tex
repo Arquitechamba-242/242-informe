@@ -3,4 +3,58 @@
 \begin{document}
 \section{Hoja de ruta}
 
+\subsection{Configuración de Hardware}
+
+\subsubsection{Recursos a usar}
+
+\begin{itemize}
+	\item ESP32: Controlador principal con conectividad Wi-Fi.
+	\item Sensor BME280: Sensor para medir temperatura, humedad y presión.
+	\item Sensor MQ135: Sensor para la detección de la concentración de CO2 en el aire.
+	\item Sensor de Humedad de Suelo: Sensor analógico para medir el nivel de humedad del suelo.
+	\item Protoboard y Jumpers: Para facilitar las conexiones de prueba.
+	\item Fuente de Alimentación: Batería o adaptador USB de 5V.
+	\item Cables Dupont: Para realizar las conexiones entre los sensores y el ESP32.
+\end{itemize}
+
+\subsubsection{Diagrama de Conexiones}
+
+\begin{itemize}
+	\item ESP32: Este será el controlador principal y estará encargado de leer los datos de cada sensor.
+	\item BME280: Este sensor utiliza la comunicación I2C para conectarse con el ESP32. Las conexiones necesarias son:
+	      \begin{enumerate}
+		      \item VCC a \qty{3.3}{\V} del ESP32.
+		      \item GND a GND del ESP32.
+		      \item SCL al pin D22 del ESP32.
+		      \item SDA al pin D21 del ESP32.
+	      \end{enumerate}
+	\item MQ135: Para el sensor MQ135, se utilizará la salida analógica para la detección de CO2.
+	      \begin{enumerate}
+		      \item VCC a \qty{5}{\V} del ESP32.
+		      \item GND a GND del ESP32.
+		      \item AOUT a un pin analógico del ESP32.
+	      \end{enumerate}
+	\item Sensor de Humedad de Suelo: El sensor de humedad de suelo puede ser analógico o digital. Se optará por la salida analógica para una medición más precisa.
+	      \begin{enumerate}
+		      \item VCC a \qty{3.3}{\V} del ESP32.
+		      \item GND a GND del ESP32.
+		      \item AOUT a un pin analógico del ESP32.
+	      \end{enumerate}
+\end{itemize}
+
+\subsubsection{Soporte del ESP32 en Arduino IDE}
+
+Para poder programar en ESP32 con Arduino, es necesario agregar un URL en el
+gestor de placas lo siguiente:
+\url{https://dl.espressif.com/dl/package_esp32_index.json}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width = 13cm]{res/configuracionParaEsp32.png}
+\end{figure}
+
+\subsubsection{Conexión con Firebase}
+
+Para realizar una conexión a Firebase desde tu ESP32, es utilizada la biblioteca
+Firebase ESP32 Client.
 \end{document}

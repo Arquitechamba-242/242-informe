@@ -76,35 +76,80 @@ Firebase ESP32 Client.
 \end{itemize}
 
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=15cm]{res/AutenticacionFireBase.png}
-	\caption{Usuario registrado en Firebase}
-	\label{FiguraDeAutenticacion}
-\end{figure}
-
-\subsubsection{Visualización de datos y gráficos}
-
+\subsubsection{Estructura de la aplicación}
+La aplicación está estructurada 4 actividades principales:
 \begin{itemize}
-	\item Parámetros ambientales:
-	      Los valores de temperatura, humedad, presión y concentración de \ce{CO2}
-	      aparecerán en la pantalla principal junto a indicadores de su
-	      adecuación al perfil de monitoreo
-	\item Generación de gráficos:
-	      La aplicación permitirá también la visualización gráfica de los datos
-	      históricos. Para implementar esta funcionalidad, se usará la biblioteca
-	      AndroidPlot que facilita la creación de gráficos de líneas, gráficos de
-	      barras y otras representaciones visuales.
-	\item Datos históricos:
-	      Los usuarios podrán acceder a un historial de las condiciones ambientales
-	      registradas, lo cual será útil para la toma de decisiones relacionadas
-	      con el cultivo.
+	\item Actividad de visualización de datos y gráficas (MainActivity) : Se muestran los datos recibidos por la placa y su interpretación respecto al perfil elegido por el usuario.
+	\item Actividad de elección de perfiles (ProfileActivity) : Se muestran todos los perfiles disponibles para su selección en \textbf{MainActivity}.
+	\item Actividad de modificación de perfiles (DisplayProfileActivity): Se muestra todos los datos del perfil seleccionado, así como la opción de modificarlo o eliminarlo.
+	\item Actividad de creación de perfiles (NewProfileActivity): Se muestra un campo para poder crear un nuevo perfil existente.
 \end{itemize}
+En la aplicación, se han usado dos estructuras de datos para abstraer los datos de los sensores y de los perfiles\\
+\textbf{Clase Profile}
+\begin{lstlisting}[language = Kotlin]
+	package com.mypackage.espapplication.models
 
+	import android.os.Parcelable
+	import kotlinx.parcelize.Parcelize
+
+	@Parcelize
+	data class Parameter(
+    	var maxValue : Double = 0.0,
+    	var minValue : Double = 0.0
+	) : Parcelable
+
+	@Parcelize
+	data class Profile(
+		var id : String? = null,
+		var name : String = "defaultProfile",
+		var alcohol : Parameter = Parameter(),
+		var altitud : Parameter = Parameter(),
+		var co2 : Parameter = Parameter(),
+		var humedaddesuelo : Parameter = Parameter(),
+		var presion : Parameter = Parameter(),
+		var temperatura : Parameter = Parameter()) : Parcelable
+\end{lstlisting}
+\textbf{Clase SensorValues}
+\begin{lstlisting}[language=Kotlin]
+	package com.mypackage.espapplication.models
+
+	class SensorValues (
+		val alcohol : Double = 0.0,
+		val altitud : Double = 0.0,
+		val co2 : Double = 0.0,
+		val estado : Int = 1,
+		val humedaddesuelo : Double = 0.0,
+		val presion : Double = 0.0,
+		val temperatura : Double = 0.0)
+\end{lstlisting}
+
+\newpage
+\begin{landscape}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[height=0.86\textheight]{res/appDiagram.png}
+		\caption{Diagrama de funcionamiento de la aplicación}
+	\end{figure}
+\end{landscape}
+\newpage
+
+\subsubsection{Visualización de Datos y Gráficos : Gráfica en tiempo real}
+La visualización de datos y gráficos se realiza de manera dinámica en la actividad principal de la aplicación.
+Los parámetros que se visualizan en la aplicación son:
+\begin{itemize}
+	\item Alcohol
+	\item Altitud
+	\item $CO_2$
+	\item Humedad
+	\item Presión
+	\item Temperatura
+\end{itemize}
+La generación de gráficos se realizará mediante la librería \textit{AndroidPlot}, utilizando un objeto \textit{XYPlot} para visualizar la información enviada por la placa, cada vez que
+ésta se conecte a la base de datos.
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=10cm]{res/GráficosParaAplicación.jpeg}
-	\caption{Gráficos generado por biblioteca}
+	\includegraphics[scale=0.35]{res/uiPreview.jpg}
+	\caption{Visualización de parámetros y gráfico en tiempo real}
 	\label{FiguraDeGráficos}
 \end{figure}
 \end{document}
